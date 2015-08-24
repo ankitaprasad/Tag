@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Tag.GalleryViewController.collectionView (Tag.GalleryViewController)(ObjectiveC.UICollectionView, numberOfItemsInSection : Swift.Int) -&gt; Swift.Int:GalleryViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Tag.GalleryViewController.viewDidLoad (Tag.GalleryViewController)() -&gt; ():GalleryViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
