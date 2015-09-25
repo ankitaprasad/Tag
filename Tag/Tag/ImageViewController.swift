@@ -22,11 +22,29 @@ class ImageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        displayPhoto()
+    }
+    
     var displayImageAsset : PHFetchResult!
     var assetCollection : PHAssetCollection!
     var index : Int!
 
     @IBOutlet var displayImageView: UIImageView!
+    
+    func displayPhoto() {
+        let scale : CGFloat = UIScreen.mainScreen().scale
+        let screenSize : CGSize = UIScreen.mainScreen().bounds.size
+        let targetSize = CGSizeMake(screenSize.width * scale , screenSize.height * scale)
+        let imageManager = PHImageManager.defaultManager()
+        if let asset = displayImageAsset[index] as? PHAsset{
+            var ID = imageManager.requestImageForAsset(asset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFit, options: nil, resultHandler: {
+                (result, info) -> Void in
+                self.displayImageView.image = result
+            
+            })
+        }
+    }
     /*
     // MARK: - Navigation
 
