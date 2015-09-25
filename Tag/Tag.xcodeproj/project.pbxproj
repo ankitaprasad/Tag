@@ -16,6 +16,7 @@
 		BC6647B41B88118D003FDA93 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6647B31B88118D003FDA93 /* GalleryViewController.swift */; };
 		BC6647B61B881CA3003FDA93 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6647B51B881CA3003FDA93 /* Photos.framework */; };
 		BC6647B81B88D029003FDA93 /* PhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6647B71B88D029003FDA93 /* PhotoThumbnail.swift */; };
+		BCFE71181B8D81AD00121948 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFE71171B8D81AD00121948 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		BC6647B31B88118D003FDA93 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		BC6647B51B881CA3003FDA93 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		BC6647B71B88D029003FDA93 /* PhotoThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnail.swift; sourceTree = "<group>"; };
+		BCFE71171B8D81AD00121948 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				BC6647B31B88118D003FDA93 /* GalleryViewController.swift */,
 				BC6647B71B88D029003FDA93 /* PhotoThumbnail.swift */,
+				BCFE71171B8D81AD00121948 /* ImageViewController.swift */,
 			);
 			name = TagViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			files = (
 				BC6647B41B88118D003FDA93 /* GalleryViewController.swift in Sources */,
 				BC6647B81B88D029003FDA93 /* PhotoThumbnail.swift in Sources */,
+				BCFE71181B8D81AD00121948 /* ImageViewController.swift in Sources */,
 				BC6647931B881095003FDA93 /* ViewController.swift in Sources */,
 				BC6647911B881095003FDA93 /* AppDelegate.swift in Sources */,
 			);
@@ -431,6 +435,7 @@
 				BC6647AC1B881095003FDA93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC6647AD1B881095003FDA93 /* Build configuration list for PBXNativeTarget "TagTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +444,7 @@
 				BC6647AF1B881095003FDA93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

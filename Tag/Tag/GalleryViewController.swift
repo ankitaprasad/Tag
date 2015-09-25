@@ -37,8 +37,9 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
+        var screenWidth = UIScreen.mainScreen().applicationFrame.width
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
-            layout.itemSize = CGSizeMake(85, 85)
+            layout.itemSize = CGSizeMake(123, 123)
             let cellSize = layout.itemSize
             thumbnailSize = CGSizeMake(cellSize.width, cellSize.height)
         }
@@ -54,15 +55,24 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         // Dispose of any resources that can be recreated.
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if let destinationVC = segue.destinationViewController as? ImageViewController {
+            let pictureViewCell = sender as! PhotoThumbnail
+            let indexPath = collectionView?.indexPathForCell(pictureViewCell)
+            destinationVC.displayImageAsset = photoAsset
+            destinationVC.assetCollection = assetCollection
+            destinationVC.index = indexPath!.item
+            
+        }
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
+
 
     // MARK: UICollectionViewDataSource
 
@@ -84,7 +94,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! PhotoThumbnail
         let asset : PHAsset = photoAsset[indexPath.item] as! PHAsset
-        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: thumbnailSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: {
+        PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: {
             (result, info) in
             cell.selectThumbnail(result)
         })
@@ -93,14 +103,10 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat{
-        return 2
+        return 1
     }
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat{
         return 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top:5,left: 5,bottom: 5,right: 5)
     }
     
     
