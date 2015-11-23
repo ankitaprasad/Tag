@@ -28,7 +28,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         
         let fetchOptions = PHFetchOptions()
 
-        var status = PHPhotoLibrary.authorizationStatus()
+        //var status = PHPhotoLibrary.authorizationStatus()
         let photoCollection = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.SmartAlbum, subtype: PHAssetCollectionSubtype.SmartAlbumUserLibrary, options: fetchOptions) as PHFetchResult
         if let firstObj1:AnyObject = photoCollection.firstObject {
             assetCollection = firstObj1 as! PHAssetCollection
@@ -37,17 +37,19 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
-        var screenWidth = UIScreen.mainScreen().applicationFrame.width
+       // var screenWidth = UIScreen.mainScreen().applicationFrame.width
         if let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout{
             layout.itemSize = CGSizeMake(123, 123)
             let cellSize = layout.itemSize
             thumbnailSize = CGSizeMake(cellSize.width, cellSize.height)
+            
         }
+        photoAsset = PHAsset.fetchAssetsInAssetCollection(assetCollection, options: nil)
+        collectionView?.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
-        photoAsset = PHAsset.fetchAssetsInAssetCollection(assetCollection, options: nil)
-        collectionView?.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,7 +98,7 @@ class GalleryViewController: UICollectionViewController, UICollectionViewDelegat
         let asset : PHAsset = photoAsset[indexPath.item] as! PHAsset
         PHImageManager.defaultManager().requestImageForAsset(asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.AspectFill, options: nil, resultHandler: {
             (result, info) in
-            cell.selectThumbnail(result)
+            cell.selectThumbnail(result!)
         })
     
         return cell

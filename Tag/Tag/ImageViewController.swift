@@ -13,7 +13,6 @@ class ImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //displayImageView.image = displayImage
         // Do any additional setup after loading the view.
     }
 
@@ -24,18 +23,27 @@ class ImageViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         displayPhoto()
+        messageTextField.placeholder = "Include a message (optional)"
     }
     
+    @IBOutlet var messageTextField: UITextField!
+
     var displayImageAsset : PHFetchResult!
     var assetCollection : PHAssetCollection!
     var index : Int!
+    var message: String!
 
     @IBOutlet var displayImageView: UIImageView!
     
+
+    @IBAction func messageBoxEndOnExit(sender: UITextField) {
+        message = sender.text
+    }
+ 
     func displayPhoto() {
         let scale : CGFloat = UIScreen.mainScreen().scale
         let screenSize : CGSize = UIScreen.mainScreen().bounds.size
-        let targetSize = CGSizeMake(screenSize.width * scale , screenSize.height * scale)
+        let targetSize = CGSizeMake(screenSize.width * scale, screenSize.height * scale)
         let imageManager = PHImageManager.defaultManager()
         if let asset = displayImageAsset[index] as? PHAsset{
             var ID = imageManager.requestImageForAsset(asset, targetSize: targetSize, contentMode: PHImageContentMode.AspectFit, options: nil, resultHandler: {
@@ -45,6 +53,15 @@ class ImageViewController: UIViewController {
             })
         }
     }
+
+    
+    func createTextField(tapPoint : CGPoint) -> UITextField {
+        let textField = UITextField(frame: CGRectMake(tapPoint.x, tapPoint.y+10, 50, 20))
+        return textField
+        
+    }
+    
+    
     /*
     // MARK: - Navigation
 
